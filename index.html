@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <script>
+            let myArray;
+            let nRow, nColumn;
+            function initArray() {
+                nRow = +prompt('Nhập số dòng');
+                nColumn = +prompt('Nhập số cột');
+
+                myArray = new Array(nRow);
+                for (let i=0;i<nRow;i++){
+
+                    myArray[i]= new Array(nColumn);
+
+                    for (let j=0;j<nColumn;j++){
+
+                        myArray[i][j] = '&nbsp;&nbsp;&nbsp';
+                    }
+                }
+            }
+            function showArray() {
+                let i,j;
+                document.write('<table border="1">');
+                for (i=0;i<nRow;i++){
+                    document.write('<tr>');
+                    for (j=0;j<nColumn;j++)
+                        document.write("<td id='x' style='background: burlywood;width: 20px'>"+"<button onclick='play()'>"+ myArray[i][j]+"</button>" + "</td>");
+                        document.write('</tr>');
+                }
+                document.write('</table>')
+            }
+            function calColumnSum(columnIndex) {
+                if (columnIndex<0 || columnIndex>=nColumn){
+                    return 0;
+                }
+                let sum=0;
+                for (let i=0;i<nColumn;i++ ){
+                    sum+=myArray[i][columnIndex];
+                }
+                return sum;
+            }
+            function calRowSum(rowIndex) {
+                if (rowIndex<0 || rowIndex>=nRow){
+                    return 0;
+                }
+                let sum=0;
+                for (let i=0;i<nRow;i++ ){
+                    sum+=myArray[i][rowIndex];
+                }
+                return sum;
+            }
+            initArray();
+            showArray();
+        </script>
+</body>
+</html>
